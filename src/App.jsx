@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Footer from "./Footer";
+import Vans from "./Vans";
 import "./styles.css";
+import "./server.js";
 function App() {
   return (
     <BrowserRouter>
@@ -14,19 +16,16 @@ function App() {
         </Link>
         <nav>
           <Link to="/about">About</Link>
+          <Link to="/vans">Vans</Link>
         </nav>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/vans" element={<Vans />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <>
-    <App />
-    <Footer />
-  </>
-);
+export default App;
