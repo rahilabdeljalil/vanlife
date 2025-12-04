@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 export default function Vans() {
   const [vans, setVans] = useState([]);
   useEffect(() => {
@@ -10,15 +10,17 @@ export default function Vans() {
 
   const vanElements = vans.map((van) => (
     <div key={van.id} className="van-tile">
-      <img src={van.imageUrl} />
-      <div className="van-info">
-        <h3>{van.name}</h3>
-        <p>
-          ${van.price}
-          <span>/day</span>
-        </p>
-      </div>
-      <i className={`van-type ${van.type} selected`}>{van.type}</i>
+      <Link to={`/vans/${van.id}`} className="link">
+        <img src={van.imageUrl} />
+        <div className="van-info">
+          <h3>{van.name}</h3>
+          <p>
+            ${van.price}
+            <span>/day</span>
+          </p>
+        </div>
+        <i className={`van-type ${van.type} selected`}>{van.type}</i>
+      </Link>
     </div>
   ));
 

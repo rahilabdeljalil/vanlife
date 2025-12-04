@@ -1,28 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Footer from "./Footer";
-import Vans from "./Vans";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Footer from "./pages/Footer.jsx";
+import Vans from "./pages/Vans.jsx";
+import VanCard from "./pages/vancards.jsx";
+import Layout from "./components/Layout.jsx"; 
 import "./styles.css";
 import "./server.js";
+
+
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link className="site-logo" to="/">
-          #VanLife
-        </Link>
-        <nav>
-          <Link to="/about">About</Link>
-          <Link to="/vans">Vans</Link>
-        </nav>
-      </header>
       <Routes>
+        <Route path="/" element={<Layout />}>
+        
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanCard />} />
+        
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
